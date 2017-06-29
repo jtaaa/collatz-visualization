@@ -15,31 +15,33 @@ class CollatzBranch{
     }
 
     draw() {
+        this.context.beginPath();
+        this.context.moveTo(this.prevPos.x, this.prevPos.y);
         while (this.currentNum < this.maxNum && this.steps < this.maxSteps) {
             let newPos = this.getNewPos();
 
             // draw the outline ===============================================
-            this.context.beginPath();
-            this.context.moveTo(this.prevPos.x, this.prevPos.y);
+            this.context.globalCompositeOperation = 'source-over';
             this.context.lineTo(newPos.x, newPos.y);
             
             this.context.lineWidth = 18;
             let outlineColor = new Color();
             outlineColor.setColorRgb(140, 140, 140);
             this.context.strokeStyle = outlineColor.getHex();
+
+            this.context.lineCap="butt"
             
             this.context.stroke(); // finish drawing outline ==================
 
             // draw the actual line ===========================================
-            this.context.beginPath();
-            this.context.moveTo(this.prevPos.x, this.prevPos.y);
-            this.context.lineTo(newPos.x, newPos.y);
-            
+            this.context.globalCompositeOperation = 'souce-in'
             this.context.lineWidth = 14;
+            
             let color = new Color();
             color.setColorRgb(255, 255, 255);
             this.context.strokeStyle = color.getHex();
-            
+
+            this.context.lineCap="round";
             this.context.stroke(); // finish drawing line =====================
             
             this.prevPos = newPos;
@@ -57,6 +59,7 @@ class CollatzBranch{
                     maxSteps: this.maxSteps
                 });
                 newBranch.draw();
+                this.context.moveTo(this.prevPos.x, this.prevPos.y);
             }
             this.currentNum *= 2;
             this.steps += 1;
