@@ -37,7 +37,7 @@ class CollatzBranch{
             
             this.context.lineWidth = 14;
             let color = new Color();
-            color.setColorRgb(255, 255, 255);
+            color.setColorRgb(70 + (this.currentNum / 100) % 135, 70, 70);
             this.context.strokeStyle = color.getHex();
             
             this.context.stroke(); // finish drawing line =====================
