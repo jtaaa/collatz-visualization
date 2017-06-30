@@ -44,7 +44,6 @@ class CollatzBranch{
             
             this.prevPos = newPos;
             
-            console.log(this.currentNum);
             if (this.currentNum % 6 === 4) {
                 let newBranch = new CollatzBranch(this.context, this.state, {
                     seed: (this.currentNum - 1) / 3,
@@ -61,7 +60,6 @@ class CollatzBranch{
             this.currentNum *= 2;
             this.steps += 1;
         }
-        console.log('Seed:', this.seed, 'Steps:', this.steps);
     }
 
     getNewPos() {
