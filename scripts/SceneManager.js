@@ -1,4 +1,4 @@
-function SceneManager(canvas, tree) {
+function SceneManager(canvas, startValues) {
 	
 	const state = {
         pixelRatio: -1,
@@ -23,7 +23,7 @@ function SceneManager(canvas, tree) {
     this.onWindowResize();
 
     this.update = function () {
-        const branch = new CollatzBranch(context, state, {
+        const branch = new CollatzBranch(context, state, startValues || {
             seed: 8,
             prevAngle: Math.PI * 1.02,
             angleStep: Math.PI / 13,
