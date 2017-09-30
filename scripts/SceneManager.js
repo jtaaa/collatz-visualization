@@ -1,5 +1,7 @@
 function SceneManager(canvas, startValues) {
-	
+    
+    this.startValues = startValues;
+    
 	const state = {
         pixelRatio: -1,
 
@@ -23,7 +25,7 @@ function SceneManager(canvas, startValues) {
     this.onWindowResize();
 
     this.update = function () {
-        const branch = new CollatzBranch(context, state, startValues || {
+        const branch = new CollatzBranch(context, state, this.startValues || {
             seed: 8,
             prevAngle: Math.PI * 1.02,
             angleStep: Math.PI / 13,
@@ -36,3 +38,17 @@ function SceneManager(canvas, startValues) {
         branch.draw();
     }
 }
+
+// 3.204
+/*
+{
+    seed: 8,
+    prevAngle: 3.204,
+    angleStep: 0.242,
+    prevPos: { x: 600, y: 1000 },
+    lineLength: 30,
+    steps: 0,
+    maxNum: 100000,
+    maxSteps: 40
+}
+*/

@@ -5,14 +5,58 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="styles/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body onload="onLoad()">
         <canvas id="canvas"></canvas>
-
+        <div id="form-div">
+            <h1>Collatz Builder</h1>
+            <form id="form" onsubmit="event.preventDefault(); generateFromForm();">
+                <fieldset>
+                    <div class="form-field">
+                        <input id="line-length" type="text" name="line-length" value="30">
+                        <label for="line-length">Line length:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="seed" type="text" name="seed" value="8">
+                        <label for="seed">Seed:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="prev-angle" type="text" name="prev-angle" value="3.204">
+                        <label for="prev-angle">Starting angle:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="angle-step" type="text" name="angle-step" value="0.242">
+                        <label for="angle-step">Angle step:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="prev-x" type="text" name="prev-x" value="600">
+                        <label for="prev-x">Starting x-pos:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="prev-y" type="text" name="prev-y" value="1200">
+                        <label for="prev-y">Starting y-pos:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="max-num" type="text" name="max-num" value="100000">
+                        <label for="max-num">Max number:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="max-steps" type="text" name="max-steps" value="40">
+                        <label for="max-steps">Max steps:</label>
+                    </div>
+                    <div class="form-field">
+                        <input id="steps" type="text" name="steps" value="0">
+                        <label for="steps">Steps:</label>
+                    </div>               </fieldset>
+                <input type="submit" value="Generate">
+            </form>
+        </div>
         <script src="scripts/CollatzBranch.js"></script>
         <script src="scripts/Utils.js"></script>
 
 		<script src="scripts/SceneManager.js"></script>    
+        <script src="scripts/FormHandler.js"></script>
         <script src="scripts/main.js"></script>
     </body>
 </html>

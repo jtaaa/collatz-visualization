@@ -1,10 +1,11 @@
-function onLoad() {
-    
+function onLoad(startValues) {
+
     const canvas = document.getElementById('canvas');
+    const formDiv = document.getElementById('form-div');
 
     window.onresize = resizeCanvas;
-    
-    const sceneManager = new SceneManager(canvas, 0);
+        
+    const sceneManager = new SceneManager(canvas, startValues);
 
     resizeCanvas();
 
@@ -15,10 +16,19 @@ function onLoad() {
     }
 
     function resizeCanvas() {
-        canvas.style.width = window.innerWidth + "px";
+        canvas.style.width = window.innerWidth * 0.75 + "px";
+        formDiv.style.width = window.innerWidth * 0.25 + "px";
+
         canvas.style.height = window.innerHeight + "px";
+        formDiv.style.height = window.innerHeight + "px";
 
         sceneManager.onWindowResize();
         sceneManager.update();
     }
+}
+
+function generateFromForm() {
+    const formData = new CollatzFormData();
+    let startValues = formData.getStartValues();
+    onLoad(startValues);
 }
